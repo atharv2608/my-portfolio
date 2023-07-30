@@ -63,16 +63,14 @@ let button = document.getElementById("send-button");
 form.addEventListener('submit', e => {
   button.textContent = "Thank You !"
   button.disabled = true;
-  setTimeout(() => {
-    button.textContent = "Send"
-    button.disabled = false;
-  }, 3000);
   e.preventDefault()
   fetch(scriptURL, { method: 'POST', body: new FormData(form) })
     .then(response => {
       document.getElementById("name").value = "";
       document.getElementById("email").value = "";
       document.getElementById("message").value = "";
+      button.textContent = "Send"
+      button.disabled = false;
     })
     .catch(error => console.error('Error!', error.message))
 })
