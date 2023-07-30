@@ -59,16 +59,20 @@ window.addEventListener('scroll', () => {
 //Google sheets
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxiRwndeHZy5Ltr6-De8gN8iSeXP2bD9XAFGGJr7h3lB2ZiwOigbFNMdD-04JcGlhtb/exec'
 const form = document.forms['submit-to-google-sheet']
-
+let button = document.getElementById("send-button");
 form.addEventListener('submit', e => {
   document.getElementById("name").value = "";
   document.getElementById("email").value = "";
   document.getElementById("message").value = "";
+  button.textContent = "Thank You !"
+  button.disabled = true;
+  setTimeout(() => {
+    button.textContent = "Send"
+    button.disabled = false;
+  }, 3000);
   e.preventDefault()
   fetch(scriptURL, { method: 'POST', body: new FormData(form) })
     .then(response => {
-      alert('Form Submitted Sucessfully')
-
     })
     .catch(error => console.error('Error!', error.message))
 })
