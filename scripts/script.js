@@ -57,13 +57,10 @@ window.addEventListener('scroll', () => {
 
 
 //Google sheets
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxiRwndeHZy5Ltr6-De8gN8iSeXP2bD9XAFGGJr7h3lB2ZiwOigbFNMdD-04JcGlhtb/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbx7XuUzTY1Ola2H8h7BGJezE4Y5513ViSjnueziR0JxomWfJBIaLZax1m2qNxpQfxl-LQ/exec'
 const form = document.forms['submit-to-google-sheet']
 let button = document.getElementById("send-button");
 form.addEventListener('submit', e => {
-  document.getElementById("name").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("message").value = "";
   button.textContent = "Thank You !"
   button.disabled = true;
   setTimeout(() => {
@@ -73,6 +70,9 @@ form.addEventListener('submit', e => {
   e.preventDefault()
   fetch(scriptURL, { method: 'POST', body: new FormData(form) })
     .then(response => {
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
     })
     .catch(error => console.error('Error!', error.message))
 })
