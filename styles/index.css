@@ -441,13 +441,6 @@ html {
     border-radius: 10px;
 }
 
-.contact-form form input::placeholder{
-    color: var(--text-color);
-}
-.contact-form form textarea::placeholder{
-    color: var(--text-color);
-}
-
 #send-button{
     padding: 8px;
     background-color: var(--primary-color);

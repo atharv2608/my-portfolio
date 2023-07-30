@@ -58,16 +58,17 @@ window.addEventListener('scroll', () => {
 
 //Google sheets
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxiRwndeHZy5Ltr6-De8gN8iSeXP2bD9XAFGGJr7h3lB2ZiwOigbFNMdD-04JcGlhtb/exec'
-  const form = document.forms['submit-to-google-sheet']
+const form = document.forms['submit-to-google-sheet']
 
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => {
-        alert('Form Submitted Sucessfully')
-        document.getElementById("name").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("message").value = "";
-      })
-      .catch(error => console.error('Error!', error.message))
-  })
+form.addEventListener('submit', e => {
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("message").value = "";
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    .then(response => {
+      alert('Form Submitted Sucessfully')
+
+    })
+    .catch(error => console.error('Error!', error.message))
+})
