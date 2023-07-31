@@ -423,7 +423,7 @@ html {
 .contact-form form input{
     display: block;
     padding: 15px;
-    width: 50rem;
+    width: 50vw;
     background-color: #262626;
     color: var(--text-color);
     border: 1px solid var(--text-color);
